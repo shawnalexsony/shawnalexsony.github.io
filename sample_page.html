@@ -1,0 +1,159 @@
+<html>
+<head>
+
+<title>
+Sample web page
+</title>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<style>
+
+body /*applies the style to everything inside body tag*/
+{
+   /* The image used */
+   background-image: url("https://s-media-cache-ak0.pinimg.com/originals/1d/6b/82/1d6b828dfff12ad21714d6316d4ba7d3.jpg");
+   /* Full height */
+   height: 100%;
+   /* Center and scale the image nicely */
+   background-position: top;
+   background-repeat: no-repeat;
+   background-size:100%;
+   background-attachment: fixed; /*so that background image stays in place while scrolling*/
+
+   margin-left: 30px; /*margin for whole body*/
+   margin-right: 30px;
+   margin-top: 5px;
+   margin-bottom: 1px;
+}
+
+#heading /*applies style specifically to the heading-id h tag*/
+{
+  font-family: Times;
+	font-size: 35px;
+	font-weight: bolder;
+	color: black;
+}
+
+#header
+{ background-color: rgba(180,180,255,.35);
+  padding: 5px 5px 2px;
+}
+
+#main-body
+{
+    background-color: rgba(255,255,255,.4);
+    padding: 5px 5px 9px;
+}
+
+
+#owner
+{
+  float: right;
+}
+
+#button2{background-color: transparent;} /*for making buttons transparent*/
+#button3{background-color: transparent;}
+
+a:hover/*to change link colour when mouse is hovered over the link*/
+{
+   color:white;
+}
+
+</style>
+
+<script>
+
+function showalert()
+{
+alert("You clicked the alert button");
+}
+
+var imgOb=null;
+var animate; 
+
+function init()
+{
+imgOb=document.getElementById('image');
+imgOb.style.position='relative';
+imgOb.style.left='0px';
+}
+window.onload=init;
+
+function moveimage()
+{ imgOb.style.left=parseInt(imgOb.style.left)+3+'px';
+
+  animate =setTimeout(moveimage,25); 
+}
+
+function stopimage()
+{
+  clearTimeout(animate);   
+  imgOb.style.left='0px';
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="header">
+<h1 id="heading" align="center"><u>This is the Sample HTML page</u></h1>
+</div>
+
+<div id="main-body">
+<br>
+<br>
+ This is the body of the sample html project
+<br>
+
+<h4>This is an ordered HTML list where the HTML automatically creates the numbers in the list:</h4>
+
+<ol>
+<li>First item in the list</li>
+<li>Second item in the list</li>
+<li>Third item in the list</li>
+</ol>
+
+<h4>This is an ordered list with no numbers to indicate order</h4>
+
+<ul>
+<li>First item in the list</li>
+<li>Second item in the list</li>
+<li>Third item in the list</li>
+</ul>
+<br>
+
+This is an <input type="button" value="Alert Button" id="button1" onclick="showalert();">.Click it to show an alert message
+<br>
+<br>
+
+Now we display an image.Click <input type="button" value="here" id="button2" onclick="moveimage();"> to move the image.
+Click <input type="button" value="here" id="button3" onclick="stopimage();"> to stop movement and reset position of the image
+
+<div>
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHfgFyOlOB-TszDJnkyLpaqWlJus8IEtBLFJW72Xat_VNjHOR-IQ" id="image" >
+
+</div>
+
+<br>
+<br>
+Click <a href="http://www.google.co.in" target="_blank" id="link1">here </a> to go to google homepage
+<br>
+
+
+</div>
+<hr>
+
+
+<p align="right" id="owner"> &#169;Shawn <b></p>
+
+
+</body>
+
+</html>
+
+
+
