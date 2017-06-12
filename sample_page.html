@@ -38,7 +38,7 @@ body /*applies the style to everything inside body tag*/
 }
 
 #header
-{ background-color: rgba(180,180,255,.35);
+{ background-color: rgba(180,200,255,.35);
   padding: 5px 5px 2px;
 }
 
@@ -72,7 +72,7 @@ alert("You clicked the alert button");
 }
 
 var imgOb=null;
-var animate; 
+/*var animate; */
 
 function init()
 {
@@ -83,14 +83,14 @@ imgOb.style.left='0px';
 window.onload=init;
 
 function moveimage()
-{ imgOb.style.left=parseInt(imgOb.style.left)+3+'px';
+{ imgOb.style.left=/*parseInt(imgOb.style.left)*/+200+'px';
 
-  animate =setTimeout(moveimage,25); 
+  /*animate =setTimeout(moveimage,25); */
 }
 
 function stopimage()
 {
-  clearTimeout(animate);   
+ /* clearTimeout(animate);*/   
   imgOb.style.left='0px';
 }
 </script>
@@ -131,7 +131,7 @@ This is an <input type="button" value="Alert Button" id="button1" onclick="showa
 <br>
 
 Now we display an image.Click <input type="button" value="here" id="button2" onclick="moveimage();"> to move the image.
-Click <input type="button" value="here" id="button3" onclick="stopimage();"> to stop movement and reset position of the image
+Click <input type="button" value="here" id="button3" onclick="stopimage();"> to reset position of the image.
 
 <div>
  <br>	
