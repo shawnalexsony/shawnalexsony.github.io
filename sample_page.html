@@ -27,13 +27,15 @@ body /*applies the style to everything inside body tag*/
    margin-right: 30px;
    margin-top: 5px;
    margin-bottom: 1px;
+
+   font-family:sans-serif;
 }
 
 #heading /*applies style specifically to the heading-id h tag*/
 {
-  font-family: Times;
+  font-family: sans-serif;
 	font-size: 35px;
-	font-weight: bolder;
+	font-weight:bold;
 	color: black;
 }
 
@@ -54,8 +56,8 @@ body /*applies the style to everything inside body tag*/
   float: right;
 }
 
-#button2{background-color: transparent;} /*for making buttons transparent*/
-#button3{background-color: transparent;}
+#button2{background-color: transparent;font-size:1em;} /*for making buttons transparent*/
+#button3{background-color: transparent;font-size:1em;}
 
 a:hover/*to change link colour when mouse is hovered over the link*/
 {
@@ -78,7 +80,8 @@ function init()
 {
 imgOb=document.getElementById('image');
 imgOb.style.position='relative';
-imgOb.style.left='0px';
+imgOb.style.right='0px';
+
 }
 window.onload=init;
 
@@ -90,7 +93,7 @@ function moveimage()
 
 function stopimage()
 {
- /* clearTimeout(animate);*/   
+ /* clearTimeout(animate);*/
   imgOb.style.left='0px';
 }
 </script>
@@ -134,7 +137,7 @@ Now we display an image.Click <input type="button" value="here" id="button2" onc
 Click <input type="button" value="here" id="button3" onclick="stopimage();"> to reset position of the image.
 
 <div>
- <br>	
+ <br>
  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHfgFyOlOB-TszDJnkyLpaqWlJus8IEtBLFJW72Xat_VNjHOR-IQ" id="image" >
 
 </div>
@@ -155,6 +158,3 @@ Click <a href="http://www.google.co.in" target="_blank" id="link1">here </a> to 
 </body>
 
 </html>
-
-
-
