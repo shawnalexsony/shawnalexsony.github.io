@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>KTU S4 ECE</title>
+		<meta charset="UTF-8">
+		<meta id="myViewport" name="viewport" content="width=400, user-scalable=no">
+		<style media="screen">
+		* {
+			margin: 0;
+			padding: 0;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+			font-family: 'Open Sans', sans-serif;
+		}
+		a:link {
+				text-decoration: none;
+		}
+		#res a:hover{
+			 text-decoration: underline;
+		}
+		#owner{
+			color: #fff;
+			float: right;
+		}
+		ul {
+				list-style:none;
+		}
+		body {
+			background: #F3F4F6;
+		}
+		.wrapper {
+			width: calc(100% - 200px);
+			margin: 0 auto;
+			max-width: 990px;
+		}
+		@media screen and (max-width: 1000px){
+			.wrapper {
+				width: calc(100% - 80px);
+			}
+		}
+		@media screen and (max-width: 500px){
+			.wrapper {
+				width: calc(100% - 30px);
+			}
+		}
+		#topbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 10px 0;
+			width: 100%;
+			background: none;
+			transition-duration: 0.3s;
+		}
+		#topbar .logo {
+			float: left;
+			height: 40px;color: white;
+			text-transform: capitalize;
+
+			line-height: 30px;
+			font-size: 16px;
+			font-weight: 600;
+			transition-duration: 0.3s;
+		}
+		#topbar.style1 {
+			background: #353A4E;
+		}
+		#topbar.style1 .logo {
+			height: 30px;
+			font-size: small;
+			overflow: auto;
+			resize: both;
+		}
+		@media screen and (max-width: 500px){
+			}
+		header {
+			background-image:url(https://images.unsplash.com/photo-1505424297051-c3ad50b055ae?auto=format&fit=crop&w=751&q=80);
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+			height:630px ;
+		}
+		header div {
+			padding: 200px 20px;
+			text-align: center;
+			font-size: 60px;
+			font-weight: 300;
+			color: #ffffff;
+			line-height: 60px;height: 630px;
+			background: linear-gradient(to right, rgba(1,95,189,0.5), rgba(60, 200, 228, 0.2));
+		}
+		header div span {
+			display: block;
+			text-align: center;
+			font-size: 30px;
+			margin-top: 15px;
+			font-weight: 300;
+		}
+		@media screen and (max-width: 800px){
+			header div {
+			font-size: 40px;
+			}
+			header div span {
+			font-size: 20px;
+			}
+		}
+		@media screen and (max-width: 440px){
+			header div {
+			font-size: 30px;
+			}
+			header div span {
+			font-size: 15px;
+			}
+
+		}
+		section {
+			padding-bottom: 100px;
+			overflow: hidden;
+		}
+		section.categories {
+			text-align: center;
+		}
+		section h1 {
+			font-size: 30px;
+			font-weight: 400;
+			color: #727282;
+			display: block;
+			margin: 0 0 20px 0;
+			text-align: center;
+		}
+		section p {
+			font-size: 15px;
+			font-weight: 200;
+			color: #727272;
+			display: block;
+			margin: 0 0 20px 0;
+			text-align: center;
+		}
+		section .category {
+			text-align: left;
+			background: #fff;
+			width: 300px;
+			margin: 15px;
+			display: inline-block;
+			padding-bottom: 15px;
+			cursor: pointer;
+			box-shadow: 10px 10px 15px #C4CAD3;
+		}
+		section .category .cover {
+			background-size: cover;
+			background-position: center;
+			margin-bottom: 10px;
+		}
+		section .category .cover div{
+			background: linear-gradient(to right, rgba(1,95,189,0.5), rgba(60, 200, 228, 0.2));
+			height: 150px;
+			line-height: 150px;
+			padding: 0 15px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 400;
+			text-align: center;
+		}
+		section .category .counter{
+			font-size: 16px;
+			font-weight: 600;
+			padding: 10px 20px;
+			display: block;
+			color: #444;
+		}
+		section .category .counter span {
+			float: right;
+			display: block;
+			color: #888;
+			font-weight: 500;
+		}
+		footer {
+			background: #323A45;
+			width: 100%;
+			overflow: hidden;
+		}
+		footer .section {
+			width: 33%;
+			padding: 40px 20px;
+			float: left;
+		}
+		@media screen and (max-width: 801px){
+			footer {
+				padding: 20px 0;
+			}
+			footer .section {
+				width: 100%;
+				padding: 20px;
+			}
+		}
+		footer h1 {
+			color: #fff;
+			font-size: 18px;
+			font-weight: 500;
+			display: block;
+			margin-bottom: 20px;
+			text-decoration: underline;
+			text-align: justify;
+		}
+		footer h2 {
+			color: #fff;
+			font-size: 30px;
+			font-weight: 500;
+			display: block;
+			margin-bottom: 20px;
+			text-decoration: underline;
+		}
+		footer p {
+			color: #eee;
+			font-size: 14px;
+			font-weight: 400;
+			display: block;
+			margin-bottom: 10px;
+		}
+		footer a{
+			text-decoration: none;
+			color: #ddd;
+			font-size: 15px;
+			font-weight: 400;
+			display: block;
+			margin-bottom: 8px;
+		}
+
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	</head>
+	<body>
+		<div id="topbar">
+			<div class="wrapper">
+				<p class="logo" ><b>KTU S4 ECE </b><span> <i>- Syllabus,Books,Notes & Qn. papers</span></i></p>
+				<nav id="nav">
+					</nav>
+			</div>
+		</div>
+		<header>
+			<div><br>
+			Electronics &  Communication Engineering
+				<br>
+				<span>For 4th semester under KTU</span>
+				</div>
+		</header>
+		<div id="search_form">
+			</div>
+			<br>
+			<br>
+
+			<section class="categories">
+				<div class="wrapper">
+					<h1>Subjects</h1>
+					<p>
+						Click on subject tiles for resources
+					</p>
+
+					<div class="category" id="1">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=750&q=80);">
+							<a href="#res">
+							<div>
+								Probability distributions,Transforms and Numerical methods
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>MA202</span></span>
+							<span class="counter ">L-T-P-Credits : <span>3-1-0-4</span></span>
+					   </a>
+					</div><div class="category" id="2">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1511203438670-49f8ea8441c6?auto=format&fit=crop&w=1500&q=80);">
+							<a href="#res">
+							<div>
+								Signals and Systems
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC202</span></span>
+							<span class="counter ">L-T-P-Credits : <span>3-1-0-4</span></span>
+					   </a>
+					</div><div class="category" id="3">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1511415932124-42efedd2eacf?auto=format&fit=crop&w=751&q=80);">
+							<a href="#res">
+							<div>
+								Analog Integrated Circuits
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC204</span></span>
+							<span class="counter ">L-T-P-Credits : <span>4-0-0-4</span></span>
+					   </a>
+					</div><div class="category" id="4">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=750&q=80);">
+							<a href="#res">
+							<div>
+								Computer Organisation
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC206</span></span>
+							<span class="counter ">L-T-P-Credits : <span>3-0-0-3</span></span>
+					   </a>
+					</div><div class="category" id="5">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1485814837398-ed2048f57499?auto=format&fit=crop&w=750&q=80);">
+							<a href="#res">
+							<div>
+								Analog Communication Engineering
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC208</span></span>
+							<span class="counter ">L-T-P-Credits : <span>3-0-0-3</span></span>
+					   </a>
+					</div><div class="category" id="6">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1505906922147-3298c0f1383c?auto=format&fit=crop&w=750&q=80);">
+							<a href="#res">
+							<div>
+								Life Skills
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>HS210</span></span>
+							<span class="counter ">L-T-P : <span>2-0-2</span></span>
+					   </a>
+					</div><div class="category" id="7">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?auto=format&fit=crop&w=755&q=80);">
+							<a href="#res">
+							<div>
+							Business Economics
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>HS200</span></span>
+							<span class="counter ">L-T-P-Credits : <span>3-0-0-3</span></span>
+					   </a>
+					</div><div class="category" id="8">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1484259147675-50b8c2f154da?auto=format&fit=crop&w=755&q=80);">
+							<a href="#res">
+							<div>
+								Lab - Analog Integrated Circuits
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC232</span></span>
+							<span class="counter ">L-T-P-Credits : <span>0-0-3-1</span></span>
+					   </a>
+					</div><div class="category" id="9">
+						<div class="cover" style="background-image: url(https://images.unsplash.com/photo-1473831818960-c89731aabc3e?auto=format&fit=crop&w=750&q=80);">
+							<a href="#res">
+							<div>
+								Lab - Logic Circuit Design
+							</div>
+						</div>
+							<span class="counter ">Course Code : <span>EC230</span></span>
+							<span class="counter ">L-T-P-Credits : <span>0-0-3-1</span></span>
+					   </a>
+					</div>
+
+
+				</div>
+			</section>
+
+		<footer>
+			<div class="wrapper" id="res">
+				<br>
+				<br>
+       <h2 class="su1">Probability distributions,Transforms and Numerical methods</h1>
+			 <h2 class="su2">	Signals and Systems</h1>
+			 <h2 class="su3">Analog Integrated Circuits</h1>
+			 <h2 class="su4">Computer Organisation</h1>
+			 <h2 class="su5">Analog Communication Engineering</h1>
+			 <h2 class="su6">Life Skills</h1>
+			 <h2 class="su7">Business Economics</h1>
+			 <h2 class="su8">Analog Integrated Circuits Lab</h1>
+			 <h2 class="su9">Logic Circuit Design Lab</h1>
+        <br>
+				<div class="section">
+
+					<h1>Syllabus</h1>
+					<p class="ss">
+						<a href="https://drive.google.com/uc?export=download&id=1AUkwAz7Zt8ljIGJaxhcxOPN-n6JQAIFT" download class="su1">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1W5Shnz6Cf8U_h980TYq5814cEgZEkceS" download class="su2">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=19xSoemo5p30H6EihJ7Bw6i9DJ4TcIw8i" download class="su3">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1v90KxD9Sszn4JFAzMXpoPAYuYNfS8SWV" download class="su4">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1-appFjoUdn0uF457zMkUenJiOkToemQz" download class="su5">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1a734wKC8mcIdWOEDLBj3QqOTm4S4IU9V" download class="su6">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=12zipQOz2QKcZF406hSXEZV8DL-owe79_" download class="su7">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1BJK7DunGmWaghZR6iB2CaX1NUm6cuksm" download class="su8">Click to Download</a>
+						<a href="https://drive.google.com/uc?export=download&id=1-cnypWra6dt4L2WFiYaeiCmZGl1gfzNq" download class="su9">Click to Download</a>
+					</p>
+				</div>
+
+				<div class="section">
+					<h1>Books and Notes</h1>
+				<div class="ss">
+					<ul class="su1">
+						<li><a href="https://drive.google.com/uc?export=download&id=1xE5PxlvgJ54ZzTcuUyDtyjIfwdOi378M" download>1) Advanced Engineering Mathematics 10th Edition by Erwin Kreyzig</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1ZEkXgzwhRUfnG59f1RlveJMSoYaGmxtc" download>2) Fundamentals of Probability and Statistics</a></li>
+					</ul>
+					<ul class="su2">
+						<li><a href="https://drive.google.com/uc?export=download&id=1bE9iCF0JNKKz81SfJ2zqymRv4cMgC7MZ" download>1) Signals and Systems by Simon Haykin</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1bE9iCF0JNKKz81SfJ2zqymRv4cMgC7MZ" download>2) Signals and Systems-Continous and Discrete</a></li>
+					</ul>
+					<ul class="su3">
+						<li><a href="https://drive.google.com/uc?export=download&id=16kqyB0UNvGYcABc51DngBhR19FXrRa4c" download>1) Operational Amplifiers and Linear Integrated Circuits</a></li>
+						</ul>
+					<ul class="su4">
+						<li><a href="https://drive.google.com/uc?export=download&id=1cbiJEAvKV1V3g9-YYUQjMu-WmrqJFhQA" download>1) Digital Design and Computer Architecture</a></li>
+					</ul>
+					<ul class="su5">
+						<li><a href="https://drive.google.com/uc?export=download&id=1SB7GfhvXmDvRMYlZ5FvWJ6EpVp8_-rcj" download>1) Communication Systems 4th Edition by Simon Haykin</a></li>
+					</ul>
+					<ul class="su6">
+						<li><a href="https://drive.google.com/uc?export=download&id=10SlEsZWZyXh7tNF-5khTH4MtXzswJx2i" download>Module 1</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1vLev_m1UfW5AwWe71tIM_Ss0cTwwFHbU" download>Module 2</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1uqHyHNJWUTbHfEPCUQWyHKvojyGbLZK0" download>Module 3</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=10dlntH_pW5I-hJx37kpX7z5AtcV3wqxz" download>Module 4</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1TduGwkW0NAQR_lP1778QtSE2XwFUYcH4" download>Module 5</a></li>
+					</ul>
+					<ul class="su7">
+						<li><a href="https://drive.google.com/uc?export=download&id=1FtCY_6G71Ic_9MkPvNejr-8zi5qzSPpw" download>1) Principles of Economics</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1Z4JkZ17erosJNEWTsf3JzteurkXq9PKW" download>2) Module 1&2</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1GgQimssGuhEXemVlKkWPcZ2oKe9bvVV_" download>~   Module 3</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1Mla7I3hUnQ_kg9G3H7KheobTmcu8n_EM" download>~	  Module 4</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1_VoFTKsH15t_xFVp-7R9VNicewNQ3_5i" download>~   Module 5</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1h6EkieNKEI23uK2zwrk_kcaptsXLL21h" download>~   Module 6</a></li>
+					</ul>
+					<ul class="su8">
+							<li><a>Not available</a></li>
+					</ul>
+					<ul class="su9">
+							<li><a>Not available</a></li>
+					</ul>
+
+				</div>
+				</div>
+
+				<div class="section">
+					<h1>Question Papers</h1>
+					<div class="ss">
+					<ul class="su1">
+						<li><a href="https://drive.google.com/uc?export=download&id=1ZTbat6O6L3PnkYPgUq8TT6TY_iXc9AFw" download>May 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1Ixg0U0xsJKw0CGURNTyHm0yrPQVJdhxH" download>July 2017</a></li>
+					</ul>
+					<ul class="su2">
+						<li><a href="https://drive.google.com/uc?export=download&id=1uADUI7y4URPKJdrosPpTDrx7a3tOa9RV" download>May 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1Ng4vKpNe1JOIfiHay1dnPWZch-jvYyjq" download>July 2017</a></li>
+					</ul>
+					<ul class="su3">
+						<li><a href="https://drive.google.com/uc?export=download&id=1VTFUSRerP3Zcpo4vNXvjlNmcLRfNdg-w" download>June 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1IVdcfRnBUghKdFcNSxQ1057UTI6j9dKv" download>July 2017</a></li>
+					</ul>
+					<ul class="su4">
+						<li><a href="https://drive.google.com/uc?export=download&id=1awySGg7unNJ2c8fdtac5Ttp9B2ue2T9G" download>June 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1makNPB9v4EilZ42lNIUrSZuvUnVTsJ6S" download>July 2017</a></li>
+					</ul>
+					<ul class="su5">
+						<li><a href="https://drive.google.com/uc?export=download&id=1d3SyZFNYQUdr5MWZQv_jKZn8I7O8qbDY" download>June 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1D7LIq--VGBiWyZNUcBJn1HBUbCECwgG1" download>July 2017</a></li>
+					</ul>
+					<ul class="su6">
+						<li><a href="https://drive.google.com/uc?export=download&id=1Hfhttps://drive.google.com/uc?export=download&id=9RU2nWxMsqARo1xfujtb-c7CUXzsjL" download>Jan 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1F-xEC38JlWLsRBveeQ1YNM4RDebnbggb" download>May 2017</a></li>
+			  	</ul>
+					<ul class="su7">
+						<li><a href="https://drive.google.com/uc?export=download&id=1c5M4FNBTif989VFR5Co2W4_DInjoRFh2" download>Jan 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=1EAAN-mC0X6-MSOHh2J3zR9mPjJW_9OTP" download>May 2017</a></li>
+						<li><a href="https://drive.google.com/uc?export=download&id=13YQ_YQTzjEmhrF4ZLFFz3Ugc9xhk7LoQ" download>July 2017</a></li>
+					</ul>
+					<ul class="su8">
+						<li><a>Not available</a></li>
+					</ul>
+					<ul class="su9">
+						<li><a>Not available</a></li>
+					</ul>
+					<br>
+					<br>
+					<hr>
+				</div>
+				</div>
+					<br><br>
+        <small id="owner">Coded by Shawn</small>
+			</div>
+		</footer>
+		<script>
+		// viewport
+		function viewport(){
+			if(screen.width<=420)
+				document.getElementById("myViewport").setAttribute("content","width=420, user-scalable=no");
+			else{
+				document.getElementById("myViewport").setAttribute("content","width=device-width, user-scalable=no");
+			}
+		}
+		// call the function
+		viewport();
+		window.onresize = function(){
+			viewport();
+		}
+
+		// scroll and topbar
+
+		var seach_height = document.getElementById('search_form').offsetTop + document.getElementById('search_form').offsetHeight - 50;
+		window.onscroll = function() {
+			var scroll_pos = window.pageYOffset ;
+
+			if ((scroll_pos > 0 ) && (scroll_pos < seach_height)){
+				// bg color and size
+				document.getElementById("topbar").className = "style1";
+			}else if (scroll_pos >= seach_height){
+				// search input
+				document.getElementById("topbar").className = "style1 style2";
+			}else{
+				// none of above
+				document.getElementById("topbar").className = "";
+			}
+		};
+
+		</script>
+
+		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+	  <script type="text/javascript">
+		 	$(".category").css('box-shadow', '10px 10px 15px #C4CAD3');
+		 	$("#1").css('box-shadow', '10px 10px 15px rgba(21,27,38,1.0)');
+	 			for(var i=1;i<=9;i++){
+		 			var x=1
+		 			if(x==i){
+		 			$(".su"+i).show();
+		 			}
+		 			else {
+		 			$(".su"+i).hide();
+		 			}}
+
+	 		$(".category").click(function() {
+		  	$(".category").css('box-shadow', '10px 10px 15px #C4CAD3');
+				$(this).css('box-shadow', '10px 10px 15px rgba(21,27,38,1.0)');
+					for(var i=1;i<=9;i++){
+    			var x=$(this).attr("id");
+						if(x==i){
+							$(".su"+i).show();
+		  			}
+		  			else {
+						$(".su"+i).hide();
+						}}
+				});
+
+	</script>
+	</body>
+</html>
