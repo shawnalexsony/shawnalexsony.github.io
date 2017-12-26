@@ -217,7 +217,7 @@
 		footer p {
 			color: #eee;
 			font-size: 14px;
-			font-weight: 400;
+			font-weight: 300;
 			display: block;
 			margin-bottom: 10px;
 		}
@@ -225,7 +225,7 @@
 			text-decoration: none;
 			color: #ddd;
 			font-size: 15px;
-			font-weight: 400;
+			font-weight: 300;
 			display: block;
 			margin-bottom: 8px;
 		}
@@ -495,21 +495,14 @@
 
 		// scroll and topbar
 
-		var seach_height = document.getElementById('search_form').offsetTop + document.getElementById('search_form').offsetHeight - 50;
 		window.onscroll = function() {
 			var scroll_pos = window.pageYOffset ;
 
-			if ((scroll_pos > 0 ) && (scroll_pos < seach_height)){
-				// bg color and size
-				document.getElementById("topbar").className = "style1";
-			}else if (scroll_pos >= seach_height){
-				// search input
-				document.getElementById("topbar").className = "style1 style2";
+			if (scroll_pos > 10 ){
+			document.getElementById("topbar").className = "style1";
 			}else{
-				// none of above
-				document.getElementById("topbar").className = "";
-			}
-		};
+			document.getElementById("topbar").className = "";}
+	  	};
 
 		</script>
 
