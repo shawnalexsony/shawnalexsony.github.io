@@ -20,23 +20,9 @@
 	self.clear=function(){self.particles=[];self.fireworks=[];self.ctx.clearRect(0,0,self.cw,self.ch);};self.canvasLoop=function(){requestAnimFrame(self.canvasLoop,self.canvas);self.ctx.globalCompositeOperation='destination-out';self.ctx.fillStyle='rgba(0,0,0,'+self.clearAlpha/100+')';self.ctx.fillRect(0,0,self.cw,self.ch);self.updateFireworks();self.updateParticles();self.drawFireworks();self.drawParticles();};self.init();}
 	var fworks=new Fireworks();$('#info-toggle').on('click',function(e){$('#info-inner').stop(false,true).slideToggle(100);e.preventDefault();});});
 	</script>
-	<script>
-		(function(i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o),
-				m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-		ga('create', 'UA-16233284-1', 'auto');
-		ga('send', 'pageview');
-		</script>
+	
 	<script type="text/javascript">
-		alert("Tap/Click on different parts of Screen to see fireworks");
+		alert("Happy New Year!!!!! Tap/Click on different parts of Screen to see fireworks");
 	</script>
 		<style>
 		canvas {
