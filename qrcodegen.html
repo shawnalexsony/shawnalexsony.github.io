@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>QR code generator</title>
+    </head>
+    <body>
+        <style>
+                html
+                 {
+                   font-size: 62.5%;
+                 }
+               
+                 body
+                 {
+                   margin: 0;
+                   padding: 0;
+                   font-size: 1.6rem;
+                   color: #404040;
+                   background: rgb(233, 233, 233);
+                   background-repeat: no-repeat;
+                   font-family: 'Montserrat', sans-serif;
+                 
+                 }
+               
+                 h1
+                 {
+                   font-family: 'Montserrat', sans-serif;
+                   text-align: center;
+                   margin: 0;
+                   padding: 0;
+                   margin: 5rem 0 1rem;
+                   font-size: 3rem;
+                   text-decoration: underline;
+                 }
+               p{
+                   text-align: center;
+               }
+               .btn{
+                   display: block;
+                   margin: 0 auto;
+                   width:auto;
+               }
+               textarea{
+                   display: block;
+                   margin: 0 auto;
+                   width:auto;
+                   
+               }
+               img{
+                   display: block;
+                   margin: 0 auto;
+                   width:auto;
+                   padding-bottom: 5px;
+                   
+               }
+               a{
+                   text-align: center;
+                   display: block;
+                   margin: 0 auto;
+                   width:auto;
+                   text-decoration: none;
+                   color:inherit;
+               }</style>
+
+
+        <h1>Create QR code</h1>
+        <br>
+        <br>
+
+        <p>Enter text or url to be converted to QR code</p>
+        <textarea name="data" id="data" cols="30" rows="2"></textarea>
+        <br>
+        
+        <input type="button" value="Generate QR code" class="btn" id="bt" onclick="create();">
+        <br>
+        
+        <div id="QR-image"></div>
+        <br>
+        <script>
+            
+        function create()
+            {
+                var data=document.getElementById("data").value;
+                document.getElementById("QR-image").innerHTML="<img src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl="+encodeURIComponent(data)+"'/>";
+            
+            };
+        
+        </script>
+    </body>
+</html>
