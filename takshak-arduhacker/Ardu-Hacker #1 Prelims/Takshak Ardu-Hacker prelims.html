@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>Ardu-Hacker Prelims</title>
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+    body{
+        font-size: 20px;
+        font-family: 'Work Sans', sans-serif;
+        color: #333;
+      font-weight: 300;
+      text-align: center;
+      background-color: #f8f6f0;
+    }
+    h1{
+      font-weight: 300;
+      margin: 0px;
+      padding: 10px;
+      font-size: 35px;
+      background-color: #444;
+      color: #fff;
+    }
+    h2{
+      font-weight: 300;
+      margin: 0px;
+      padding: 20px;
+      font-size: 15px;
+      background-color: rgb(80, 80, 80);
+      color: #fff;
+    }
+    .question{
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .answers {
+      margin-bottom: 20px;
+      text-align: left;
+      display: inline-block;
+    }
+    .answers label{
+      display: block;
+      margin-bottom: 10px;
+    }
+    button{
+      font-family: 'Work Sans', sans-serif;
+        font-size: 22px;
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 3px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    button:hover{
+        background-color: #38a;
+    }
+    .slide{
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .active-slide{
+      opacity: 1;
+      z-index: 2;
+    }
+    .quiz-container{
+      position: relative;
+      height: 200px;
+      margin-top: 10px;
+    }
+    p{
+      color: red;
+      font-size: 50px;
+      margin:0 auto;
+    }
+    </style>
+    </head>
+    
+    <body>
+
+    <h1>Ardu-Hacker</h1>
+    <h2>Preliminary Quiz </h2>
+    <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+    <div class="quiz-container">
+      <div id="quiz"></div>
+    </div>
+    <button id="previous">Previous Question</button>
+    <button id="next">Next Question</button>
+    <button id="submit">Submit Quiz</button>
+    
+    <div id="results"></div>
+    <div id="details"></div>
+    
+
+    <script src="jquery.js"></script>
+    <script >(function () {
+ const myQuestions = [
+      {
+        question: "  Arduino IDE consists of 2 functions. What are they??",
+        answers: {
+          a: "build() and loop()",
+          b: "setup() and loop()",
+          c: "build() and setup()",
+          d: "None of the above"},
+    
+        correctAnswer: "b" },
+      {
+        question: " Which is the programming language used for controlling of Arduino??",
+        answers: {
+          a: "Assembly language",
+          b: "C language",
+          c: "Python",
+          d: "Any language"},
+    
+        correctAnswer: "d" },
+      {
+        question: "What does GPIO stand for??",
+        answers: {
+          a: "General Purpose Inner Outer",
+          b: "General Purpose Input Output",
+          c: "General Purpose Integrated Output",
+          d: "None of the Above"},
+    
+        correctAnswer: "b" },
+      {
+        question: " A program written with the IDE for Arduino is called _________",
+        answers: {
+          a: "IDE Source",
+          b: "Sketch",
+          c: "Source Code",
+          d: "None of the above"},
+    
+        correctAnswer: "b" },
+      {
+        question: " How many digital pins are there on the UNO board??",
+        answers: {
+          a: "14",
+          b: "12",
+          c: "16",
+          d: "20"},
+    
+        correctAnswer: "a" },
+      {
+        question: " analogWrite() function controls output using _____?",
+        answers: {
+          a: "Pulse Width Modulation",
+          b: "Regulator",
+          c: "Voltage Division",
+          d: "None of the above"},
+    
+        correctAnswer: "a" },
+      {
+        question: " It starts with a /* and continues until a */  What does this do??",
+        answers: {
+          a: "loads sketch",
+          b: "makes comments",
+          c: "delay compiling",
+          d: "none of the above"},
+    
+        correctAnswer: "b" },
+      {
+        question: "Which function is called over and over as long as we give power to arduino?",
+        answers: {
+          a: "setup()",
+          b: "delay()",
+          c: "loop()",
+          d: "none of the above"},
+    
+        correctAnswer: "c" },
+      {
+        question: " What is the microcontroller used in Arduino UNO??",
+        answers: {
+          a: "ATmega328p",
+          b: "ATmega2560",
+          c: "ATmega32114",
+          d: "AT91SAM3x8E"},
+    
+        correctAnswer: "a" },
+		
+		{
+        question: "How many inbuilt LEDs are there in the Arduino UNO board?",
+        answers: {
+          a: "2",
+          b: "3",
+          c: "1",
+          d: "4" },
+    
+        correctAnswer: "d" },
+    
+      {
+        question: "What does p refer to in ATmega328p??",
+        answers: {
+          a: "Production",
+          b: "Pico power",
+          c: "Programmable on Chip",
+          d: "None of the above" },
+    
+        correctAnswer: "b" },
+    
+      {
+        question: "What is the default bootloader of the Arduino UNO??",
+        answers: {
+          a: "Optiboot",
+          b: "AIR-boot",
+          c: "Bare box",
+          d: "GAG" },
+    
+        correctAnswer: "a" },
+		
+		{
+        question: "Which of the digital pins has an inbuilt LED in Arduino UNO?",
+        answers: {
+          a: "Pin 4",
+          b: "Pin 8",
+          c: "Pin 13",
+          d: "Pin 0" },
+    
+        correctAnswer: "c" },
+		
+		
+	  {
+        question: "Which function is used for manipulating time?",
+        answers: {
+          a: "analogWrite()",
+          b: "delay()",
+          c: "pinMode()",
+          d: "waiter()" },
+
+        correctAnswer: "b" },	
+
+        {
+        question: "Which of the following LEDs will blink when data is going from the Arduino to a PC",
+        answers: {
+          a: "Power LED",
+          b: "TX LED",
+          c: "RX LED",
+          d: "Pin 13 LED" },
+    
+        correctAnswer: "b" },
+
+        {
+        question: "How many digital pins are there in Arduino Mega",
+        answers: {
+          a: "16",
+          b: "54",
+          c: "12",
+          d: "32" },
+    
+        correctAnswer: "b" },
+
+
+       {
+        question: "What is the expansion of I2C protocol?",
+        answers: {
+          a: "Inter-Integrated Circuit",
+          b: "Information to Console",
+          c: "Information Interchange circuit",
+          d: "Serial Peripheral Interface" },
+    
+        correctAnswer: "a" },
+
+        {
+        question: "Which pin serves as the SDA (Data transfer line for I2C protocol) pin in arduino UNO?",
+        answers: {
+          a: "Digital 7",
+          b: "Analog 0",
+          c: "Analog 4",
+          d: "Reset Pin" },
+    
+        correctAnswer: "c" },
+
+        {
+        question: "How many digital pins can be used as PWM in Arduino UNO?",
+        answers: {
+          a: "4",
+          b: "8",
+          c: "2",
+          d: "6" },
+    
+        correctAnswer: "d" },	
+
+        {
+        question: "How much flash memory does the Arduino UNO have?",
+        answers: {
+          a: "8KB",
+          b: "32KB",
+          c: "16KB",
+          d: "64KB" },
+    
+        correctAnswer: "b" },
+
+        {
+        question: "Extra boards which can be added on top of an Arduino are called",
+        answers: {
+          a: "Covers",
+          b: "Shields",
+          c: "PCBs",
+          d: "Modules" },
+    
+        correctAnswer: "b" },	
+        
+        {
+        question: "Which of these is the official Arduino website?",
+        answers: {
+          a: "www.arduinoprojects.com",
+          b: "www.arduino.org",
+          c: "www.arduino.com",
+          d: "www.arduino.cc" },
+    
+        correctAnswer: "d" },
+
+        {
+        question: "Which of these is not a real arduino board",
+        answers: {
+          a: "Arduino Mega",
+          b: "Arduino UNO",
+          c: "Arduino Duemilanove",
+          d: "Arduino Tesla" },
+    
+        correctAnswer: "d" },
+
+         {
+        question: "The readings from a temperature sensor can be :",
+        answers: {
+          a: "Taken as digital output",
+          b: "Taken as analog input",
+          c: "Taken as digital input",
+          d: "Taken as analog output" },
+    
+        correctAnswer: "d" },
+
+        {
+        question: "The prescribed input power range for arduino UNO is:",
+        answers: {
+          a: "5v-18v",
+          b: "9v-50v",
+          c: "3v-8v",
+          d: "Any voltage range is okay." },
+    
+        correctAnswer: "a" } 		
+
+  
+      ];
+        
+    
+    
+      function buildQuiz() {
+        // we'll need a place to store the HTML output
+        const output = [];
+    
+        // for each question...
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+          // we'll want to store the list of answer choices
+          const answers = [];
+    
+          // and for each available answer...
+          for (letter in currentQuestion.answers) {
+            // ...add an HTML radio button
+            answers.push(
+            `<label>
+                 <input type="radio" name="question${questionNumber}" value="${letter}">
+                  ${letter} :
+                  ${currentQuestion.answers[letter]}
+               </label>`);
+    
+          }
+    
+          // add this question and its answers to the output
+          output.push(
+          `<div class="slide">
+               <div class="question"> ${currentQuestion.question} </div>
+               <div class="answers"> ${answers.join("")} </div>
+             </div>`);
+    
+        });
+    
+        // finally combine our output list into one string of HTML and put it on the page
+        quizContainer.innerHTML = output.join("");
+      }
+    
+      function showResults() {
+        // gather answer containers from our quiz
+        const answerContainers = quizContainer.querySelectorAll(".answers");
+    
+        // keep track of user's answers
+        let numCorrect = 0;
+    
+        // for each question...
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+          // find selected answer
+          const answerContainer = answerContainers[questionNumber];
+          const selector = `input[name=question${questionNumber}]:checked`;
+          const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    
+          // if answer is correct
+          if (userAnswer === currentQuestion.correctAnswer) {
+            // add to the number of correct answers
+            numCorrect++;
+    
+            // color the answers green
+            answerContainers[questionNumber].style.color = "lightgreen";
+          } else {
+            // if answer is wrong or blank
+            // color the answers red
+            answerContainers[questionNumber].style.color = "red";
+          }
+        });
+    
+        // show number of correct answers out of total
+        resultsContainer.innerHTML = `<strong><h1> Your score is ${numCorrect} out of ${myQuestions.length} </h1></strong> <br><br>`;
+        $("#submit").hide();
+        $("#quiz").hide();
+        $(".quiz-container").hide();
+        
+        
+
+      }
+    
+      function showSlide(n) {
+        slides[currentSlide].classList.remove("active-slide");
+        slides[n].classList.add("active-slide");
+        currentSlide = n;
+    
+        if (currentSlide === 0) {
+          previousButton.style.display = "none";
+        } else {
+          previousButton.style.display = "none";
+        }
+    
+        if (currentSlide === slides.length - 1) {
+          nextButton.style.display = "none";
+          submitButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          submitButton.style.display = "none";
+        }
+      }
+    
+      function showNextSlide() {
+        showSlide(currentSlide + 1);
+      }
+    
+      function showPreviousSlide() {
+        showSlide(currentSlide - 1);
+      }
+    
+      const quizContainer = document.getElementById("quiz");
+      const resultsContainer = document.getElementById("results");
+      const submitButton = document.getElementById("submit");
+    
+      // display quiz right away
+      buildQuiz();
+    
+      const previousButton = document.getElementById("previous");
+      const nextButton = document.getElementById("next");
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+    
+      showSlide(0);
+    
+      // on submit, show results
+      submitButton.addEventListener("click", showResults);
+      previousButton.addEventListener("click", showPreviousSlide);
+      nextButton.addEventListener("click", showNextSlide);
+    })();
+    //# sourceURL=pen.js
+    </script>
+    <script>
+      $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      return results[1] || 0;
+      }
+
+      // example.com?param1=name&id=6
+      var v1=$.urlParam('name'); 
+      var v2=$.urlParam('qr');
+      var v3=$.urlParam('phone');
+      var v4=$.urlParam('college');
+      var content="Name: "+v1+"<br>QR ID: "+v2+"<br>Phone Number: "+v3+"<br>College: "+v4;
+      $("#submit").click(function(){ $("#details").html(content); });
+      
+    </script>
+  <script>
+      window.onload = function () {
+        
+        var seconds = 00; 
+        var tens = 00; 
+        var appendTens = document.getElementById("tens")
+        var appendSeconds = document.getElementById("seconds")
+        var buttonStart = document.getElementById('button-start');
+        var buttonStop = document.getElementById('button-stop');
+        var buttonReset = document.getElementById('button-reset');
+        var Interval ;
+      
+          
+           clearInterval(Interval);
+           Interval = setInterval(startTimer, 10);
+        
+          $("#submit").click(function() {
+             clearInterval(Interval);
+        });
+        
+      
+        
+         
+        
+        function startTimer () {
+          tens++; 
+          
+          if(tens < 9){
+            appendTens.innerHTML = "0" + tens;
+          }
+          
+          if (tens > 9){
+            appendTens.innerHTML = tens;
+            
+          } 
+          
+          if (tens > 99) {
+            console.log("seconds");
+            seconds++;
+            appendSeconds.innerHTML = "0" + seconds;
+            tens = 0;
+            appendTens.innerHTML = "0" + 0;
+          }
+          
+          if (seconds > 9){
+            appendSeconds.innerHTML = seconds;
+          }
+        
+        }
+        
+      
+      }
+      </script>
+      
+    </body></html>

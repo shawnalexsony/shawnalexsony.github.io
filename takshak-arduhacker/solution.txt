@@ -1,0 +1,76 @@
+Debugging Round 1-
+
+pinmode is OUTPUT
+
+semi colon - digwrite low
+dely & delayy spelling
+semi colon - delay
+
+pin number 12
+pin number 12
+colon
+colon
+delay value
+pin number 11
+
+digwrite high
+delay Y00
+colon
+
+
+
+Debugging Round 2-
+
+pinnumber 3,5,6
+
+setup
+
+analogwrite pin1 fadevale
+delay O0
+
+analogwrite pin1 
+
+loop opening
+colon
+
+
+Debugging Round 3-
+
+servo object mservo
+potpin
+val semicolon
+
+attach 4
+
+analogread popin
+map 1014,280
+
+
+
+Debugging Round 4-
+
+lcd semi colon
+
+lcdd.begin
+
+setcursor (i,20);
+setcursor semi colon
+for loop semi colon
+loop closing braces
+
+
+
+Debugging Round 5-
+
+s[] double quotes
+
+setup opening brace
+
+loop increment i
+delay semi colon
+delay 5OO
+digitalwrite 12
+delay 5OO
+
+
+
