@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Shawn Alex Sony</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+
+<style>
+html, body {
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+  min-height: 100%;
+  height: 100%;
+}
+.container{
+    min-height: 100%;
+    height: 100%;
+}
+
+a:link{
+    color: rgb(56, 56, 56);
+    text-decoration:none;
+    font-size:2.4vmax;
+}
+a:hover{
+    text-decoration:underline;
+}
+a:visited{
+    color: rgb(56, 56, 56);
+    text-decoration:none;
+}
+
+.output {
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+  color: rgb(56, 56, 56);
+}
+.output h1 {
+  font-size: 4vmax;
+}
+.output p {
+  font-size: 2.5vmax;
+}
+
+/* Cursor Styling */
+.cursor::after {
+  content: '';
+  display: inline-block;
+  margin-left: 3px;
+  background-color: rgb(56, 56, 56);
+  animation-name: blink;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+}
+
+h1.cursor::after {
+  height: 4vmax;
+  width: 1.66vmax;
+}
+
+p.cursor::after {
+  height: 2.5vmax;
+  width: 0.8vmax;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+</style>
+
+
+</head>
+<body>
+<br> <br>
+<div class="container py-5"> 
+
+<div class="row h-100">
+<div class="col-md-12 my-auto">
+  <div class="output" id="output">
+    <h1 class="cursor"></h1> <br><br>
+    <p></p>
+  </div>
+  <div id="links"> <br><br>
+  
+  <!--<a href = "http://www.shawnalexsony.github.io/blog" target="_blank" id="1">
+   Personal Blog</a>  <br><br>-->
+  <a href = "mailto:shawnalex97@gmail.com" target="_blank" id="2">
+   Gmail</a>   <br><br>
+  <a href = "http://www.linkedin.com/in/shawnalexsony" target="_blank" id="3">
+   Linkedin</a>   <br><br>
+  <a href = "http://www.github.com/shawnalexsony" target="_blank" id="4">
+   Github</a>   <br><br>
+  <a href="http://www.instagram.com/shawn_al_x" target="_blank" id="5">
+   Instagram</a> <br>
+  
+  </div>
+  </div>
+  </div>
+  
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script>
+   for(var j=1;j<6;j++){
+            $("#" + j).hide();
+        }
+
+
+// values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
+var i = 0,
+    a = 0,
+    isBackspacing = false,
+    isParagraph = false;
+
+// Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
+var textArray = [
+  "Hey there!!! I'm Shawn|Nice to Meet you! :)", 
+  "I work as a Hardware design engineer|I do design, analysis, schematics, testing of Embedded systems", 
+  "I'm a Coder too!!!|I do Embedded programming, Fullstack Web dev, Hybrid apps,...",
+  "and I'm a Maker!!! |I build and break stuff for DIY projects, usually for Arduino, IoT and Electronics stuff.",
+  "Want to know more??|Connect with me ;)",
+  
+];
+
+// Speed (in milliseconds) of typing.
+var speedForward = 80, //Typing Speed
+    speedWait = 1000, // Wait between typing and backspacing
+    speedBetweenLines = 500, //Wait between first and second lines
+    speedBackspace = 25; //Backspace Speed
+
+//Run the loop
+typeWriter("output", textArray);
+
+function typeWriter(id, ar) {
+  var element = $("#" + id),
+      aString = ar[a],
+      eHeader = element.children("h1"), //Header element
+      eParagraph = element.children("p"); //Subheader element
+  
+  // Determine if animation should be typing or backspacing
+  if (!isBackspacing) {
+    
+    // If full string hasn't yet been typed out, continue typing
+    if (i < aString.length) {
+      
+      // If character about to be typed is a pipe, switch to second line and continue.
+
+        if (aString.charAt(i) == "|") {
+        isParagraph = true;
+        eHeader.removeClass("cursor");
+        eParagraph.addClass("cursor");
+        i++;
+        setTimeout(function(){ typeWriter(id, ar); }, speedBetweenLines);
+        
+      // If character isn't a pipe, continue typing.
+      } else {
+        // Type header or subheader depending on whether pipe has been detected
+        if (!isParagraph) {
+          eHeader.text(eHeader.text() + aString.charAt(i));
+        } else {
+          eParagraph.text(eParagraph.text() + aString.charAt(i));
+        }
+        i++;
+        setTimeout(function(){ typeWriter(id, ar); }, speedForward);
+      }
+      
+    // If full string has been typed, switch to backspace mode.
+    } else if (i == aString.length) {
+      
+      isBackspacing = true;
+      setTimeout(function(){ typeWriter(id, ar); }, speedWait);
+      
+    }
+    
+  // If backspacing is enabled
+  } else {
+    
+    // If either the header or the paragraph still has text, continue backspacing
+    if ((eHeader.text().length > 0 || eParagraph.text().length > 0)&& (a+1)<ar.length) {
+      
+      // If paragraph still has text, continue erasing, otherwise switch to the header.
+      if (eParagraph.text().length > 0) {
+        eParagraph.text(eParagraph.text().substring(0, eParagraph.text().length - 1));
+      } else if (eHeader.text().length > 0) {
+        eParagraph.removeClass("cursor");
+        eHeader.addClass("cursor");
+        eHeader.text(eHeader.text().substring(0, eHeader.text().length - 1));
+      }
+      setTimeout(function(){ typeWriter(id, ar); }, speedBackspace);
+    
+    // If neither head or paragraph still has text, switch to next quote in array and start typing.
+    } else { 
+      
+      isBackspacing = false;
+      i = 0;
+      isParagraph = false;
+      a = (a + 1); //% ar.length; //Moves to next position in array, always looping back to 0
+      if(a<ar.length)
+      {setTimeout(function(){ typeWriter(id, ar); }, 200);}
+      else
+      {eHeader.removeClass("cursor");eParagraph.removeClass("cursor");
+        for(var j=1;j<6;j++){
+            $("#"+j).show(100*j);
+        }
+      }
+      
+    }
+  }
+}
+
+  </script>
+
+</body>
+</html>
