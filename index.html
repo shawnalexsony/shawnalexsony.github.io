@@ -122,7 +122,7 @@ var textArray = [
   ];
 
 // Speed (in milliseconds) of typing.
-var speedForward = 80, //Typing Speed
+var speedForward = 100, //Typing Speed
     speedWait = 1000, // Wait between typing and backspacing
     speedBetweenLines = 500, //Wait between first and second lines
     speedBackspace = 25; //Backspace Speed
@@ -200,7 +200,7 @@ function typeWriter(id, ar) {
       {eHeader.removeClass("cursor");eParagraph.removeClass("cursor"); //Stop typing and remove cursor
         for(var j=1;j<6;j++) //Display contact links
         {  
-            $("#"+j).show(500*j);
+            $("#"+j).show(150*j);
         }
       }
       
