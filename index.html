@@ -18,7 +18,7 @@ html, body {
     min-height: 100%;
     height: 100%;
 }
-
+/* Contact Link Styling */
 a:link{
     color: rgb(56, 56, 56);
     text-decoration:none;
@@ -32,6 +32,7 @@ a:visited{
     text-decoration:none;
 }
 
+/* Text Styling */  
 .output {
   text-align: center;
   font-family: 'Source Code Pro', monospace;
@@ -66,21 +67,11 @@ p.cursor::after {
 }
 
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  49% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  0%  {opacity: 1;}
+  49% {opacity: 1;}
+  50% {opacity: 0;}
+  100%{opacity: 0;}
 }
-
-
 </style>
 
 
@@ -88,15 +79,13 @@ p.cursor::after {
 <body>
 <br> <br>
 <div class="container py-5"> 
-
 <div class="row h-100">
 <div class="col-md-12 my-auto">
   <div class="output" id="output">
     <h1 class="cursor"></h1> <br><br>
     <p></p>
   </div>
-  <div id="links"> <br><br>
-  
+  <div id="links"> <br>
   <!--<a href = "http://www.shawnalexsony.github.io/blog" target="_blank" id="1">
    Personal Blog</a>  <br><br>-->
   <a href = "mailto:shawnalex97@gmail.com" target="_blank" id="2">
@@ -107,19 +96,16 @@ p.cursor::after {
    Github</a>   <br><br>
   <a href="http://www.instagram.com/shawn_al_x" target="_blank" id="5">
    Instagram</a> <br>
-  
   </div>
-  </div>
-  </div>
-  
-</div>
+ </div>
+ </div>
+ </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script>
+//Hide contact links at the beginning
    for(var j=1;j<6;j++){
             $("#" + j).hide();
         }
-
-
 // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
 var i = 0,
     a = 0,
@@ -133,8 +119,7 @@ var textArray = [
   "I'm a Coder too!!!|I do Embedded programming, Fullstack Web dev, Hybrid apps,...",
   "and I'm a Maker!!! |I build and break stuff for DIY projects, usually for Arduino, IoT and Electronics stuff.",
   "Want to know more??|Connect with me ;)",
-  
-];
+  ];
 
 // Speed (in milliseconds) of typing.
 var speedForward = 80, //Typing Speed
@@ -208,13 +193,14 @@ function typeWriter(id, ar) {
       isBackspacing = false;
       i = 0;
       isParagraph = false;
-      a = (a + 1); //% ar.length; //Moves to next position in array, always looping back to 0
-      if(a<ar.length)
-      {setTimeout(function(){ typeWriter(id, ar); }, 200);}
+      a = (a + 1); //increment to next array element text
+     if(a<ar.length) //Stop loop at end of text. use a = (a + 1)% ar.length; for always looping back to 0
+      {setTimeout(function(){ typeWriter(id, ar); }, 200);} //Move to next element
       else
-      {eHeader.removeClass("cursor");eParagraph.removeClass("cursor");
-        for(var j=1;j<6;j++){
-            $("#"+j).show(100*j);
+      {eHeader.removeClass("cursor");eParagraph.removeClass("cursor"); //Stop typing and remove cursor
+        for(var j=1;j<6;j++) //Display contact links
+        {  
+            $("#"+j).show(500*j);
         }
       }
       
@@ -222,7 +208,7 @@ function typeWriter(id, ar) {
   }
 }
 
-  </script>
+</script>
 
 </body>
 </html>
